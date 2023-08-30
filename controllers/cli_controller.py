@@ -15,5 +15,27 @@ def drop_db():
     db.drop_all()
     print('Tables Dropped')
 
-# @db_commands.cli.command('seed')
-# def seed_db():
+@db_commands.cli.command('seed')
+def seed_db():
+    materials = [
+        Material(
+            material_name="Blackwood"
+        ),
+        Material(
+            material_name="QLD Walnut"
+        ),
+        Material(
+            material_name="Maple"
+        ),
+        Material(
+            material_name="Blue Gum"
+        ),
+         Material(
+            material_name="Cotton"
+         ),
+    ]
+    
+    db.session.add_all(materials)
+    db.session.commit()
+
+    print('Tables Seeded')
